@@ -1,8 +1,8 @@
-function module_fuel(mass::Int64)
+function module_fuel(mass::Int32)
     return mass ÷ 3 - 2
 end
 
-function fuel_fuel(mass)
+function fuel_fuel(mass::Int32)
     fuel = module_fuel(mass)
     if fuel <= 0
         return 0
@@ -11,7 +11,7 @@ function fuel_fuel(mass)
     end
 end
 
-module_mass_list = parse.(Int64, readlines("01.txt"))
+module_mass_list = parse.(Int32, readlines("in/01.in"))
 fuel_sum = sum(module_fuel.(module_mass_list))
 
 println(sum(fuel_fuel.(module_mass_list)))
